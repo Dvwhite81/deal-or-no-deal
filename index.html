@@ -11,13 +11,17 @@
 <body>
   <div id="overlay-black"></div>
   <div id="container">
-    <div id="top">
-      <img id="top-logo" src="/square-logo.png" alt="small logo" />
+    <div id="top" class="muted">
       <div id="top-modal">
         <div id="top-modal-content" class="modal-content">
           <p>Welcome to Deal or No Deal!</p>
           <p>Select a case to begin</p>
         </div>
+      </div>
+      <div id="game-info" class="hidden">
+        <div id="info-case"></div>
+        <div id="info-offer"></div>
+        <div id="info-cases-to-open"></div>
       </div>
     </div>
     <div id="bottom">
@@ -112,6 +116,16 @@
             <p>You selected case <span id="confirm-modal-span"></span></p>
             <p>Continue with this case?</p>
             <button id="confirm-modal-submit" class="btn">Yes</button>
+          </div>
+        </div>
+        <div id="offer-modal" class="hidden">
+          <img id="banker-img" src="/banker-img.png" alt="banker img" />
+          <img id="offer-text-img" src="/offer-text.png" alt="offer text" />
+          <div id="offer-modal-amount"></div>
+          <div id="offer-modal-btns">
+            <button id="offer-modal-accept" type="button"></button>
+            <p id="offer-modal-or">OR</p>
+            <button id="offer-modal-refuse" type="button"></button>
           </div>
         </div>
         <div id="board" class="hidden">

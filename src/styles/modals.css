@@ -1,0 +1,117 @@
+#top-modal {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#top-modal {
+  background-color: black;
+  border: 1px solid var(--light-gold);
+  border-radius: 10px;
+  color: var(--dark-gold);
+  grid-column: 2;
+  height: calc(var(--top-height) - 1rem);
+  margin: auto;
+  width: var(--board-width);
+}
+
+.modal-content {
+  align-items: center;
+  display: grid;
+  font-size: larger;
+  font-weight: bold;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}
+
+#confirm-modal {
+  background-color: black;
+  border: 1px solid var(--light-gold);
+  border-radius: 10px;
+  color: var(--light-gold);
+  height: 25vh;
+  margin: auto;
+  margin-top: 15vh;
+  position: relative;
+  width: var(--board-width);
+}
+
+.modal-close {
+    right: 0.5rem;
+    position: absolute;
+}
+
+#confirm-modal-submit {
+  background-color: var(--light-gold);
+  border: var(--dark-gold);
+  border-radius: 10px;
+  color: black;
+  margin: auto;
+  padding: 1vw;
+  width: fit-content;
+}
+
+#offer-modal,
+#offer-modal-amount,
+#offer-modal-accept,
+#offer-modal-refuse {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+#offer-modal {
+  background: black;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  height: var(--board-height);
+  margin: auto;
+  width: var(--board-width);
+}
+
+#offer-text-img {
+  margin: 0 auto;
+  width: 50%;
+}
+
+#offer-modal-amount {
+  background-image: url('/offer-cell.png');
+  border-radius: 5px;
+  height: 10%;
+  margin: 0 auto;
+  width: 75%;
+}
+
+#offer-modal-btns {
+  align-items: center;
+  display: flex;
+  height: 15%;
+  justify-content: space-between;
+  margin: 10px auto;
+  width: 95%;
+}
+
+#offer-modal-accept,
+#offer-modal-refuse {
+  background-size: cover;
+  height: var(--cell-height);
+  padding: 5px;
+  width: 45%;
+}
+
+#offer-modal-accept {
+  background-image: url('/deal-btn.png');
+}
+
+#offer-modal-refuse {
+  background-image: url('/no-deal-btn.png');
+}
+
+#offer-modal-or {
+  align-items: center;
+  color: white;
+  display: flex;
+  font-size: x-large;
+  font-weight: bolder;
+  height: var(--cell-height);
+}

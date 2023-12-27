@@ -7,6 +7,7 @@ import {
   confirmTextSpan,
   cases,
   overlay,
+  offerModal,
 } from './dom';
 
 let selectedCase;
@@ -20,7 +21,8 @@ const showConfirmModal = () => {
   });
   confirmModalSubmit.addEventListener('click', () => {
     confirmModal.classList.add('hidden');
-    board.classList.remove('hidden');
+    // board.classList.remove('hidden');
+    offerModal.classList.remove('hidden');
     startGame(selectedCase);
   });
 };

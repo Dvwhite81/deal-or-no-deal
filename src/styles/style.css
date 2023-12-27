@@ -3,6 +3,7 @@
 @import './cases.css';
 @import './bottom.css';
 @import './prizes.css';
+@import './modals.css';
 
 /* Main container */
 #container {
@@ -44,6 +45,10 @@
 
 .muted {
   background: var(--muted);
+}
+
+.black {
+  background-color: black;
 }
 
 .btn:hover {
