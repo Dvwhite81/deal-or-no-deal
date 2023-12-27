@@ -1,0 +1,36 @@
+@media screen and (min-width: 900px) {
+  /* … */
+}
+
+.case-row {
+  display: grid;
+  height: 100%;
+  justify-content: center;
+}
+
+.odd {
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.even {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.case {
+  align-items: center;
+  background: url(/briefcase.png) no-repeat;
+  background-size: contain;
+  cursor: pointer;
+  display: grid;
+  height: var(--case-height);
+  justify-content: center;
+  margin: auto;
+  text-align: center;
+  width: var(--case-width);
+}
+
+.case-text {
+  font-size: var(--case-text);
+  font-weight: 900;
+  height: var(--case-text);
+}

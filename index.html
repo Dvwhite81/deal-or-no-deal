@@ -1,14 +1,283 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/assets/favicon/favicon-192.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite Template</title>
-  </head>
 
-  <body>
-        <div id="container"></div>
-    <script type="module" src="/src/js/main.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/src/assets/favicon/favicon-192.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite Template</title>
+</head>
+
+<body>
+  <div id="intro-modal" class="hidden">
+    <div class="modal-content">
+      <p>Welcome to Deal or No Deal!</p>
+      <p>Select a case to begin</p>
+    </div>
+  </div>
+  <div id="container">
+    <div id="top">
+      <img id="top-logo" src="/square-logo.png" alt="small logo" />
+    </div>
+    <div id="bottom">
+      <div id="left">
+        <div class="prize-column">
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">.01</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">1</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">5</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">10</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">25</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">50</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">75</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">100</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">200</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">300</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">400</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">500</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">750</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="center">
+        <div id="game">
+          <div class="case-row odd">
+            <div id="case-1" class="case">
+              <div class="case-text">1</div>
+            </div>
+            <div id="case-2" class="case">
+              <div class="case-text">2</div>
+            </div>
+            <div id="case-3" class="case">
+              <div class="case-text">3</div>
+            </div>
+            <div id="case-4" class="case">
+              <div class="case-text">4</div>
+            </div>
+            <div id="case-5" class="case">
+              <div class="case-text">5</div>
+            </div>
+            <div id="case-6" class="case">
+              <div class="case-text">6</div>
+            </div>
+            <div id="case-7" class="case">
+              <div class="case-text">7</div>
+            </div>
+          </div>
+          <div class="case-row even">
+            <div id="case-8" class="case">
+              <div class="case-text">8</div>
+            </div>
+            <div id="case-9" class="case">
+              <div class="case-text">9</div>
+            </div>
+            <div id="case-10" class="case">
+              <div class="case-text">10</div>
+            </div>
+            <div id="case-11" class="case">
+              <div class="case-text">11</div>
+            </div>
+            <div id="case-12" class="case">
+              <div class="case-text">12</div>
+            </div>
+            <div id="case-13" class="case">
+              <div class="case-text">13</div>
+            </div>
+          </div>
+          <div class="case-row odd">
+            <div id="case-14" class="case">
+              <div class="case-text">14</div>
+            </div>
+            <div id="case-15" class="case">
+              <div class="case-text">15</div>
+            </div>
+            <div id="case-16" class="case">
+              <div class="case-text">16</div>
+            </div>
+            <div id="case-17" class="case">
+              <div class="case-text">17</div>
+            </div>
+            <div id="case-18" class="case">
+              <div class="case-text">18</div>
+            </div>
+            <div id="case-19" class="case">
+              <div class="case-text">19</div>
+            </div>
+            <div id="case-20" class="case">
+              <div class="case-text">20</div>
+            </div>
+          </div>
+          <div class="case-row even">
+            <div id="case-21" class="case">
+              <div class="case-text">21</div>
+            </div>
+            <div id="case-22" class="case">
+              <div class="case-text">22</div>
+            </div>
+            <div id="case-23" class="case">
+              <div class="case-text">23</div>
+            </div>
+            <div id="case-24" class="case">
+              <div class="case-text">24</div>
+            </div>
+            <div id="case-25" class="case">
+              <div class="case-text">25</div>
+            </div>
+            <div id="case-26" class="case">
+              <div class="case-text">26</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="right">
+        <div class="prize-column">
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">1,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">5,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">10,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">25,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">50,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">75,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">100,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">200,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">300,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">400,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">500,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">750,000</span>
+            </div>
+          </div>
+          <div class="prize-cell">
+            <div class="prize-select">
+              <span class="dollar-symbol">$</span>
+              <span class="prize-amount">1,000,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+
 </html>
