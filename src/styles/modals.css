@@ -29,6 +29,7 @@
   border: 1px solid var(--light-gold);
   border-radius: 10px;
   color: var(--light-gold);
+  font-size: larger;
   height: 25vh;
   margin: auto;
   margin-top: 15vh;
@@ -47,7 +48,7 @@
   border-radius: 10px;
   color: black;
   margin: auto;
-  padding: 1vw;
+  padding: 0.5vw 1vw;
   width: fit-content;
 }
 
@@ -103,6 +104,8 @@
   height: var(--cell-height);
   justify-content: center;
   padding: 5px;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
   width: 40%;
 }
 

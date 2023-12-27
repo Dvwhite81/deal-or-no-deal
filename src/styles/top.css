@@ -1,5 +1,6 @@
 #top {
   display: grid;
+  font-size: larger;
   grid-row: 1;
   grid-template-columns: var(--sidebar-width) var(--center-width) var(--sidebar-width);
   justify-content: center;
