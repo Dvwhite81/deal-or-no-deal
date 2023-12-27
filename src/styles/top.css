@@ -1,0 +1,39 @@
+#top {
+  background-color: var(--muted);
+  display: grid;
+  grid-row: 1;
+  grid-template-columns: var(--sidebar-width) var(--center-width) var(--sidebar-width);
+  justify-content: center;
+}
+
+#top-logo,
+#top-modal {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#top-logo {
+  height: var(--top-height);
+  width: 20vw;
+}
+
+#top-modal {
+  background-color: black;
+  border: 1px solid var(--light-gold);
+  border-radius: 10px;
+  color: var(--dark-gold);
+  grid-column: 2;
+  height: calc(var(--top-height) - 1rem);
+  margin: auto;
+  width: var(--board-width);
+}
+
+.modal-content {
+  align-items: center;
+  display: grid;
+  font-size: larger;
+  font-weight: bold;
+  height: 100%;
+  text-align: center;
+  width: 100%;
+}

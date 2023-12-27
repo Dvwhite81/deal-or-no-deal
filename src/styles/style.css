@@ -1,54 +1,8 @@
+@import './global.css';
+@import './top.css';
 @import './cases.css';
-
-@font-face {
-    font-family: 'roboto';
-    src: url('../assets/fonts/Roboto-Thin.ttf');
-    font-weight: 200;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'roboto';
-    src: url('../assets/fonts/Roboto-Regular.ttf');
-    font-weight: 400;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'roboto';
-    src: url('../assets/fonts/Roboto-Medium.ttf');
-    font-weight: 700;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'roboto';
-    src: url('../assets/fonts/Roboto-Bold.ttf');
-    font-weight: 900;
-    font-display: swap;
-}
-
-* {
-    font-family: roboto, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-  --board-height: 75vh;
-  --board-width: 60vw;
-  --bottom-height: 80vh;
-  --case-height: calc(var(--case-width) * .85);
-  --case-width: calc(calc(var(--board-width) / 7) - 5px);
-  --cell-height: calc((var(--bottom-height) / 13) - 6px);
-  --center-width: 60vw;
-  --sidebar-width: 20vw;
-  --case-text: calc(var(--case-height) * .6);
-  --top-height: 20vh;
-  --light-gold: #ffed89;
-  --dark-gold: #696236;
-  --muted: rgba(0, 0, 0, 0.7);
-}
+@import './bottom.css';
+@import './prizes.css';
 
 /* Main container */
 #container {
@@ -61,91 +15,39 @@
   width: 100vw;
 }
 
-#top {
-  background-color: var(--muted);
-  display: flex;
-  justify-content: center;
-}
-
-#top-logo {
-  width: 20vw;
-}
-
-#bottom {
-  display: grid;
-  grid-template-columns: var(--sidebar-width) var(--center-width) var(--sidebar-width);
-}
-
-#left,
-#right {
-  width: var(--sidebar-width);
-}
-
-#center {
-  display: grid;
-}
-
-#game,
-#intro-modal {
-  background-color: black;
-  border: 1px solid var(--light-gold);
-  border-radius: 10px;
-  margin: auto;
-  width: var(--board-width);
-}
-
-#game {
-  display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  height: var(--board-height);
-}
-
-#intro-modal {
-  color: var(--dark-gold);
-  height: calc(var(--top-height) - 1rem);
-  left: 50%;
+#overlay-black{
   position: absolute;
-  top: 0.5rem;
-  transform: translate(-50%, 0);
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index:1;
+  background-color:black;
+  animation-name:fadeIn;
+  animation-duration:3s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
 }
 
-.modal-content {
-  align-items: center;
-  display: grid;
-  font-size: larger;
-  font-weight: bold;
-  height: 100%;
-  text-align: center;
-  width: 100%;
+@keyframes fadeIn {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
 }
 
 .hidden {
   display: none!important;
 }
 
-.prize-cell {
-  background: url('/prize-cell.png');
-  background-color: var(--light-gold);
-  background-position: 50%;
-  background-size: cover;
-  border: 1px solid var(--dark-gold);
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: bold;
-  height: var(--cell-height);
-  margin: 5px;
-}
-
-.prize-select {
-  align-items: center;
-  border-radius: 9px;
-  display: flex;
-  height: 100%;
-  justify-content: space-between;
-  padding: 0 5px;
-  width: 100%;
-}
-
 .muted {
   background: var(--muted);
+}
+
+.btn:hover {
+  background-color: black!important;
+  color: var(--light-gold)!important;
+  cursor: pointer;
 }

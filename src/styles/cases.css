@@ -29,6 +29,11 @@
   width: var(--case-width);
 }
 
+.case:hover,
+.selected-case {
+  opacity: 0.5;
+}
+
 .case-text {
   font-size: var(--case-text);
   font-weight: 900;

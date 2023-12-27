@@ -1,0 +1,49 @@
+@font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/Roboto-Thin.ttf');
+    font-weight: 200;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/Roboto-Regular.ttf');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/Roboto-Medium.ttf');
+    font-weight: 700;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'roboto';
+    src: url('../assets/fonts/Roboto-Bold.ttf');
+    font-weight: 900;
+    font-display: swap;
+}
+
+* {
+    font-family: roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+  --board-height: 75vh;
+  --board-width: 60vw;
+  --bottom-height: 80vh;
+  --case-height: calc(var(--case-width) * .85);
+  --case-width: calc(calc(var(--board-width) / 7) - 5px);
+  --cell-height: calc((var(--bottom-height) / 13) - 6px);
+  --center-width: 60vw;
+  --sidebar-width: 20vw;
+  --case-text: calc(var(--case-height) * .6);
+  --top-height: 20vh;
+  --light-gold: #ffed89;
+  --dark-gold: #696236;
+  --muted: rgba(0, 0, 0, 0.7);
+}
