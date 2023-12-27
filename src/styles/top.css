@@ -5,3 +5,44 @@
   grid-template-columns: var(--sidebar-width) var(--center-width) var(--sidebar-width);
   justify-content: center;
 }
+
+#game-info {
+  display: grid;
+  grid-column: 1 / 4;
+  grid-template-columns: 30% 40% 30%;
+  width: 100%;
+}
+
+#info-your-case,
+#info-offer,
+#info-cases-to-open {
+  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#info-your-case-label,
+#info-offer-label,
+#info-cases-to-open-label {
+  background: var(--gold-gradient);
+  background-clip: text;
+  filter: brightness(120%);
+  font-size: x-large;
+  font-weight: 900;
+  margin: 0 auto;
+  text-align: center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#info-offer-span,
+#info-cases-to-open-value {
+  color: ivory;
+  font-size: xx-large;
+  font-weight: 900;
+  text-align: center;
+}
+
+#info-offer-span {
+  text-align: left;
+}

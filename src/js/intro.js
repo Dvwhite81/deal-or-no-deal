@@ -1,15 +1,46 @@
 import startGame from './game';
 import {
   board,
+  bottom,
   confirmModal,
   confirmModalClose,
   confirmModalSubmit,
   confirmTextSpan,
   cases,
+  gameInfo,
+  leftSide,
   overlay,
+  rightSide,
+  top,
+  topModal,
+  yourCaseDiv,
 } from './dom';
 
 let selectedCase;
+
+const handleBackgrounds = () => {
+  topModal.classList.add('hidden');
+  gameInfo.classList.remove('hidden');
+  leftSide.classList.remove('hidden');
+  rightSide.classList.remove('hidden');
+  top.classList.remove('muted');
+  top.classList.add('black');
+  bottom.classList.add('muted');
+};
+
+const copySelectedCase = (caseCopy) => {
+  yourCaseDiv.append(caseCopy);
+  caseCopy.classList.remove('selected-case');
+};
+
+const finishSetup = () => {
+  selectedCase.classList.add('selected-case');
+  handleBackgrounds();
+  const caseCopy = selectedCase.cloneNode(true);
+  caseCopy.id = 'case-copy';
+  copySelectedCase(caseCopy);
+  startGame(selectedCase);
+};
 
 const showConfirmModal = () => {
   confirmModal.classList.remove('hidden');
@@ -21,7 +52,7 @@ const showConfirmModal = () => {
   confirmModalSubmit.addEventListener('click', () => {
     confirmModal.classList.add('hidden');
     board.classList.remove('hidden');
-    startGame(selectedCase);
+    finishSetup(selectedCase);
   });
 };
 

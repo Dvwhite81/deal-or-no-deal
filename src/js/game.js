@@ -1,17 +1,15 @@
-import { top, bottom, topModal, gameInfo, leftSide, rightSide } from './dom';
+import { updateCasesToOpen, updateCurrentOffer } from './dom';
 
-const handleBackgrounds = () => {
-  topModal.classList.add('hidden');
-  gameInfo.classList.remove('hidden');
-  leftSide.classList.remove('hidden');
-  rightSide.classList.remove('hidden');
-  top.classList.remove('muted');
-  top.classList.add('black');
-  bottom.classList.add('muted');
-};
+let gameCase;
+let offer;
+let casesToOpen;
+
 const startGame = (selectedCase) => {
-  selectedCase.classList.add('selected-case');
-  handleBackgrounds();
+  gameCase = selectedCase;
+  offer = 0;
+  casesToOpen = 6;
+  updateCasesToOpen(casesToOpen);
+  updateCurrentOffer(offer);
 };
 
 export default startGame;

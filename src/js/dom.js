@@ -15,15 +15,28 @@ const rightSide = document.querySelector('#right');
 const top = document.querySelector('#top');
 const bottom = document.querySelector('#bottom');
 const offerModal = document.querySelector('#offer-modal');
+const yourCaseDiv = document.querySelector('#info-your-case');
+const currentOfferSpan = document.querySelector('#info-offer-value');
+const casesToOpenSpan = document.querySelector('#info-cases-to-open-value');
+
+const updateCurrentOffer = (offer) => {
+  currentOfferSpan.textContent = offer;
+};
+
+const updateCasesToOpen = (number) => {
+  casesToOpenSpan.textContent = number;
+};
 
 export {
   board,
   bottom,
   cases,
+  casesToOpenSpan,
   confirmModal,
   confirmModalClose,
   confirmModalSubmit,
   confirmTextSpan,
+  currentOfferSpan,
   gameInfo,
   infoCase,
   infoCasesToOpen,
@@ -34,4 +47,7 @@ export {
   rightSide,
   top,
   topModal,
+  updateCasesToOpen,
+  updateCurrentOffer,
+  yourCaseDiv,
 };
