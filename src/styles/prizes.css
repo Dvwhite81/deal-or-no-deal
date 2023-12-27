@@ -1,8 +1,5 @@
 .prize-cell {
-  background: url('/prize-cell.png');
-  background-color: var(--light-gold);
-  background-position: 50%;
-  background-size: cover;
+  background: var(--gold-gradient);
   border: 1px solid var(--dark-gold);
   border-radius: 5px;
   cursor: pointer;

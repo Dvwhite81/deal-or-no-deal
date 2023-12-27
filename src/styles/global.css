@@ -43,7 +43,12 @@
   --sidebar-width: 20vw;
   --case-text: calc(var(--case-height) * .6);
   --top-height: 20vh;
-  --light-gold: #ffed89;
-  --dark-gold: #696236;
+  --light-gold: #feef94;
+  --dark-gold: #e5ba54;
+  --gold-gradient: linear-gradient(to right, var(--dark-gold), var(--light-gold), var(--dark-gold));
+  --green-bg: #21d627;
+  --green-gradient: linear-gradient(var(--green-bg), rgba(0, 150, 0, 0.9) 49% 51%, var(--green-bg));
+  --red-bg: #e30d17;
+  --red-gradient: linear-gradient(var(--red-bg), rgba(150, 0, 0, 0.9) 49% 51%, var(--red-bg));
   --muted: rgba(0, 0, 0, 0.7);
 }

@@ -51,16 +51,8 @@
   width: fit-content;
 }
 
-#offer-modal,
-#offer-modal-amount,
-#offer-modal-accept,
-#offer-modal-refuse {
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 #offer-modal {
-  background: black;
+  background-color: black;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -69,17 +61,26 @@
   width: var(--board-width);
 }
 
-#offer-text-img {
+#offer-text {
+  background: var(--gold-gradient);
+  background-clip: text;
+  filter: brightness(120%);
+  font-size: xx-large;
+  font-weight: 900;
   margin: 0 auto;
-  width: 50%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 #offer-modal-amount {
-  background-image: url('/offer-cell.png');
+  background: var(--gold-gradient);
   border-radius: 5px;
+  font-size: xx-large;
+  font-weight: 900;
   height: 10%;
   margin: 0 auto;
-  width: 75%;
+  text-align: center;
+  width: 50%;
 }
 
 #offer-modal-btns {
@@ -93,24 +94,31 @@
 
 #offer-modal-accept,
 #offer-modal-refuse {
-  background-size: cover;
+  align-items: center;
+  border-radius: 5px;
+  color: ivory;
+  display: flex;
+  font-size: x-large;
+  font-weight: bolder;
   height: var(--cell-height);
+  justify-content: center;
   padding: 5px;
-  width: 45%;
+  width: 40%;
 }
 
 #offer-modal-accept {
-  background-image: url('/deal-btn.png');
+  background: var(--green-gradient);
 }
 
 #offer-modal-refuse {
-  background-image: url('/no-deal-btn.png');
+  background: var(--red-gradient);
 }
 
 #offer-modal-or {
   align-items: center;
-  color: white;
+  color: ivory;
   display: flex;
+  filter: brightness(80%);
   font-size: x-large;
   font-weight: bolder;
   height: var(--cell-height);
