@@ -6,7 +6,6 @@ import {
   confirmModalClose,
   confirmModalSubmit,
   confirmTextSpan,
-  cases,
   gameInfo,
   leftSide,
   overlay,
@@ -14,6 +13,7 @@ import {
   top,
   topModal,
   yourCaseDiv,
+  addCaseListeners,
 } from './dom';
 
 let selectedCase;
@@ -23,7 +23,7 @@ const handleBackgrounds = () => {
   gameInfo.classList.remove('hidden');
   leftSide.classList.remove('hidden');
   rightSide.classList.remove('hidden');
-  top.classList.remove('muted');
+  top.classList.remove('muted', 'hidden');
   top.classList.add('black');
   bottom.classList.add('muted');
 };
@@ -43,10 +43,12 @@ const finishSetup = () => {
 };
 
 const showConfirmModal = () => {
+  top.classList.add('hidden');
   confirmModal.classList.remove('hidden');
   confirmModalClose.addEventListener('click', () => {
     confirmModal.classList.add('hidden');
     board.classList.remove('hidden');
+    top.classList.remove('hidden');
     selectedCase = null;
   });
   confirmModalSubmit.addEventListener('click', () => {
@@ -63,26 +65,14 @@ const confirmCase = () => {
   showConfirmModal(selectedCase);
 };
 
-const setCase = (e) => {
-  const { target } = e;
-  selectedCase = target.classList.contains('case-text')
-    ? target.parentElement
-    : target;
-  confirmCase(selectedCase);
-};
 
-const addCaseListeners = () => {
-  cases.forEach((c) => {
-    c.addEventListener('click', setCase, { once: true });
-  });
-};
 
-const setup = () => {
+const fadeIn = () => {
   setTimeout(() => {
     overlay.classList.add('hidden');
     board.classList.remove('hidden');
-    addCaseListeners();
+    top.classList.remove('hidden');
   }, 4000);
 };
 
-export default setup;
+export { setCase, fadeIn };

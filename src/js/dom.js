@@ -18,6 +18,8 @@ const offerModal = document.querySelector('#offer-modal');
 const yourCaseDiv = document.querySelector('#info-your-case');
 const currentOfferSpan = document.querySelector('#info-offer-value');
 const casesToOpenSpan = document.querySelector('#info-cases-to-open-value');
+const helpModal = document.querySelector('#help-modal');
+const helpModalSubmit = document.querySelector('#help-modal-submit');
 
 const updateCurrentOffer = (offer) => {
   currentOfferSpan.textContent = offer;
@@ -25,6 +27,15 @@ const updateCurrentOffer = (offer) => {
 
 const updateCasesToOpen = (number) => {
   casesToOpenSpan.textContent = number;
+};
+
+const showHelpInfo = () => {
+  helpModal.classList.remove('hidden');
+  infoOffer.classList.remove('hidden');
+  helpModalSubmit.addEventListener('click', () => {
+    helpModal.classList.add('hidden');
+    board.classList.remove('hidden');
+  });
 };
 
 export {
@@ -49,5 +60,6 @@ export {
   topModal,
   updateCasesToOpen,
   updateCurrentOffer,
+  showHelpInfo,
   yourCaseDiv,
 };

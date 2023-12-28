@@ -7,18 +7,32 @@
 }
 
 #game-info {
+  align-items: center;
   display: grid;
   grid-column: 1 / 4;
+  grid-row: 1;
   grid-template-columns: 30% 40% 30%;
   width: 100%;
+}
+
+#info-your-case {
+  grid-column: 1;
+}
+
+#info-offer {
+  grid-column: 2;
+}
+
+#info-cases-to-open {
+  grid-column: 3;
 }
 
 #info-your-case,
 #info-offer,
 #info-cases-to-open {
   align-items: center;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
 }
 
 #info-your-case-label,
@@ -35,14 +49,43 @@
   -webkit-text-fill-color: transparent;
 }
 
+#case-copy,
 #info-offer-span,
 #info-cases-to-open-value {
+  align-items: center;
   color: ivory;
+  display: flex;
   font-size: xx-large;
   font-weight: 900;
-  text-align: center;
+  height: 10vh;
 }
 
 #info-offer-span {
   text-align: left;
+}
+
+#case-copy {
+  background-position: center;
+}
+
+#case-copy .case-text {
+  align-items: baseline;
+  color: #000;
+  display: flex;
+  font-size: 5vh;
+  height: 5vh;
+}
+
+@media screen and (min-width: 600px) {
+  #case-copy .case-text {
+    font-size: 6vh;
+    height: 6vh;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #case-copy .case-text {
+    font-size: 8vh;
+    height: 8vh;
+  }
 }

@@ -9,13 +9,13 @@
 </head>
 
 <body>
-  <div id="overlay-black"></div>
+  <div id="overlay-black" class="fade-in"></div>
   <div id="container">
-    <div id="top" class="muted">
+    <div id="top" class="hidden">
       <div id="top-modal">
         <div id="top-modal-content" class="modal-content">
-          <p>Welcome to Deal or No Deal!</p>
-          <p>Select a case to begin</p>
+          <p id="top-modal-p1">Welcome to Deal or No Deal!</p>
+          <p id="top-modal-p2">Select a case to begin</p>
         </div>
       </div>
       <div id="game-info" class="hidden">
@@ -118,6 +118,14 @@
         </div>
       </div>
       <div id="center">
+        <div id="help-modal" class="hidden">
+          <div id="help-modal-content" class="modal-content">
+            <p id="help-modal-p1">Click on cases to open them</p>
+            <p id="help-modal-p2">Open all cases for the round</p>
+            <p id="help-modal-p3">Then, you will get an offer from the banker</p>
+            <button id="help-modal-submit" class="btn">OK</button>
+          </div>
+        </div>
         <div id="confirm-modal" class="hidden">
           <span id="confirm-modal-close" class="modal-close btn">×</span>
           <div id="confirm-modal-content" class="modal-content">

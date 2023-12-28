@@ -7,11 +7,12 @@
   background-color: black;
   border: 1px solid var(--light-gold);
   border-radius: 10px;
-  color: var(--dark-gold);
+  color: var(--light-gold);
   grid-column: 2;
   height: calc(var(--top-height) - 1rem);
   margin: auto;
   width: var(--board-width);
+  z-index: 1;
 }
 
 .modal-content {
@@ -24,25 +25,27 @@
   width: 100%;
 }
 
-#confirm-modal {
-  background-color: black;
+#confirm-modal,
+#help-modal {
+  background-color: #000;
   border: 1px solid var(--light-gold);
   border-radius: 10px;
   color: var(--light-gold);
   font-size: larger;
-  height: 25vh;
-  margin: auto;
-  margin-top: 15vh;
+  height: 50vh;
+  margin: 5vh auto auto;
   position: relative;
-  width: var(--board-width);
+  width: 50vw;
 }
 
 .modal-close {
+  font-size: xx-large;
     right: 0.5rem;
     position: absolute;
 }
 
-#confirm-modal-submit {
+#confirm-modal-submit,
+#help-modal-submit {
   background-color: var(--light-gold);
   border: var(--dark-gold);
   border-radius: 10px;

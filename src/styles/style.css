@@ -7,7 +7,7 @@
 
 /* Main container */
 #container {
-  background-image: url('/background.jpg');
+  background-image: url('/background-tall.jpg');
   background-position: center;
   background-size: cover;
   display: grid;
@@ -16,18 +16,18 @@
   width: 100vw;
 }
 
-#overlay-black{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  z-index:1;
-  background-color:black;
+#overlay-black {
   animation-name:fadeIn;
   animation-duration:3s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
+  background-color:black;
+  height: 100vh;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index:1;
 }
 
 @keyframes fadeIn {
@@ -55,4 +55,11 @@
   background-color: black!important;
   color: var(--light-gold)!important;
   cursor: pointer;
+}
+
+@media screen and (min-width: 700px) {
+  #container {
+    background-image: url('/background.jpg');
+    background-size: cover;
+  }
 }
