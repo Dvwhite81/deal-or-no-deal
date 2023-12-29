@@ -26,7 +26,8 @@
 }
 
 #confirm-modal,
-#help-modal {
+#help-modal,
+#open-case-modal {
   background-color: #000;
   border: 1px solid var(--light-gold);
   border-radius: 10px;
@@ -47,7 +48,7 @@
 #confirm-modal-submit,
 #help-modal-submit {
   background-color: var(--light-gold);
-  border: var(--dark-gold);
+  border: 2px solid var(--light-gold);
   border-radius: 10px;
   color: black;
   margin: auto;
@@ -128,4 +129,49 @@
   font-size: x-large;
   font-weight: bolder;
   height: var(--cell-height);
+}
+
+#open-case-modal {
+  margin: auto;
+}
+
+#guessed-case {
+  background-position: 50%;
+  height: 80%;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+}
+
+#guessed-case:hover {
+    opacity: 1;
+}
+
+#guessed-case-number {
+  color: black;
+  display: flex;
+  font-size: 20vh;
+  height: 50%;
+  margin: auto;
+}
+
+#guessed-case-amount {
+  align-items: center;
+  animation-name: fadeIn2;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  background: #000;
+  border-radius: 10px;
+  display: flex;
+  font-size: xx-large;
+  height: 60%;
+  justify-content: center;
+  left: 50%;
+  position: absolute;
+  top: 58%;
+  transform: translate(-50%,-50%);
+  width: 35vh;
 }

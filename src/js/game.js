@@ -1,4 +1,5 @@
 import {
+  applyGuessToPrize,
   board,
   bottom,
   cases,
@@ -6,11 +7,11 @@ import {
   confirmModalClose,
   confirmModalSubmit,
   confirmTextSpan,
-  gameInfo,
-  leftSide,
-  overlay,
-  rightSide,
+  fadeInBackground,
+  handleBackgrounds,
+  showGuessedCaseModal,
   showHelpInfo,
+  showOffer,
   top,
   topModal,
   updateCasesToOpen,
@@ -23,20 +24,16 @@ let assignedCases;
 let offer;
 let casesToOpen;
 let selectedCase;
-let gameCase;
+let round;
+let removedPrizes;
 
 const setup = () => {
   assignedCases = fillCases();
   offer = 0;
   casesToOpen = 6;
-  setTimeout(fadeIn, 4000);
-};
-
-const fadeIn = () => {
-  overlay.classList.add('hidden');
-  board.classList.remove('hidden');
-  top.classList.remove('hidden');
-  cases.forEach((c) => c.addEventListener('click', setCase));
+  round = 1;
+  removedPrizes = [];
+  setTimeout(fadeInBackground, 4000);
 };
 
 const setCase = (e) => {
@@ -72,23 +69,12 @@ const showConfirmModal = () => {
 };
 
 const finishSetup = () => {
-  console.log('finishSetup selectedCase:', selectedCase);
-  selectedCase.classList.add('selected-case');
   handleBackgrounds();
   const caseCopy = selectedCase.cloneNode(true);
   caseCopy.id = 'case-copy';
   copySelectedCase(caseCopy);
+  selectedCase.style.visibility = 'hidden';
   startGame(selectedCase);
-};
-
-const handleBackgrounds = () => {
-  topModal.classList.add('hidden');
-  gameInfo.classList.remove('hidden');
-  leftSide.classList.remove('hidden');
-  rightSide.classList.remove('hidden');
-  top.classList.remove('muted', 'hidden');
-  top.classList.add('black');
-  bottom.classList.add('muted');
 };
 
 const copySelectedCase = (caseCopy) => {
@@ -100,19 +86,43 @@ const copySelectedCase = (caseCopy) => {
 };
 
 const guessCase = (e) => {
-  console.log('guessCase e:', e);
-  console.log('guessCase gameCase:', gameCase);
-  console.log('guessCase assignedCases:', assignedCases);
+  const { target } = e;
+  const targetCase = target.classList.contains('case-text')
+    ? target.parentElement
+    : target;
+  const guess = assignedCases.find((c) => c.briefcase === targetCase);
+  openCase(guess);
+};
+
+const openCase = (guess) => {
+  casesToOpen--;
+
+  const { briefcase, prize } = guess;
+  showGuessedCaseModal(briefcase, prize);
+  updateCasesToOpen(casesToOpen);
+  applyGuessToPrize(prize, assignedCases);
+  removedPrizes.push(prize);
+
+  if (casesToOpen === 0) {
+    endRound();
+  }
 };
 
 const playRound = () => {
   cases.forEach((c) => c.addEventListener('click', guessCase));
 };
 
+const endRound = () => {
+  console.log('endRound');
+  round++;
+  if (round === 10) {
+    endGame();
+  }
+  cases.forEach((c) => c.removeEventListener('click', guessCase));
+  showOffer();
+};
+
 const startGame = () => {
-  console.log('startGame assignedCases:', assignedCases);
-  gameCase = selectedCase;
-  console.log('startGame gameCase:', gameCase);
   cases.forEach((c) => c.removeEventListener('click', setCase));
 
   updateCasesToOpen(casesToOpen);
@@ -123,4 +133,8 @@ const startGame = () => {
   }, 3000);
 };
 
-export default setup;
+const endGame = () => {
+  console.log('END GAME');
+};
+
+export { setCase, setup };

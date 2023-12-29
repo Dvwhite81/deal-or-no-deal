@@ -34,6 +34,10 @@
   opacity: 0.5;
 }
 
+.selected-case:hover {
+  cursor: default;
+}
+
 .case-text {
   font-size: var(--case-text);
   font-weight: 900;

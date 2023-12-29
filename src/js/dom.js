@@ -1,6 +1,8 @@
-const cases = document.querySelectorAll('.case');
+import { setCase } from './game';
+
 const overlay = document.querySelector('#overlay-black');
 const board = document.querySelector('#board');
+const cases = board.querySelectorAll('.case');
 const confirmModal = document.querySelector('#confirm-modal');
 const confirmTextSpan = document.querySelector('#confirm-modal-span');
 const confirmModalClose = document.querySelector('#confirm-modal-close');
@@ -20,6 +22,10 @@ const currentOfferSpan = document.querySelector('#info-offer-value');
 const casesToOpenSpan = document.querySelector('#info-cases-to-open-value');
 const helpModal = document.querySelector('#help-modal');
 const helpModalSubmit = document.querySelector('#help-modal-submit');
+const openCaseModal = document.querySelector('#open-case-modal');
+const caseNumberElement = document.querySelector('#guessed-case-number');
+const amountElement = document.querySelector('#guessed-case-amount');
+const prizeAmounts = document.querySelectorAll('.prize-amount');
 
 const updateCurrentOffer = (offer) => {
   currentOfferSpan.textContent = offer;
@@ -27,6 +33,11 @@ const updateCurrentOffer = (offer) => {
 
 const updateCasesToOpen = (number) => {
   casesToOpenSpan.textContent = number;
+};
+
+const getNumberFromCase = (briefcase) => {
+  const { id } = briefcase;
+  return id.split('-')[1];
 };
 
 const showHelpInfo = () => {
@@ -38,7 +49,65 @@ const showHelpInfo = () => {
   });
 };
 
+const fadeInBackground = () => {
+  overlay.classList.add('hidden');
+  board.classList.remove('hidden');
+  top.classList.remove('hidden');
+  cases.forEach((c) => c.addEventListener('click', setCase));
+};
+
+const handleBackgrounds = () => {
+  topModal.classList.add('hidden');
+  gameInfo.classList.remove('hidden');
+  leftSide.classList.remove('hidden');
+  rightSide.classList.remove('hidden');
+  top.classList.remove('muted', 'hidden');
+  top.classList.add('black');
+  bottom.classList.add('muted');
+};
+
+const showGuessedCaseModal = (briefcase, prize) => {
+  briefcase.style.visibility = 'hidden';
+  board.classList.add('hidden');
+  openCaseModal.classList.remove('hidden');
+  updateGuessModal(briefcase, prize);
+  amountElement.classList.remove('hidden');
+  setTimeout(hideGuessedCaseModal, 3000);
+};
+
+const hideGuessedCaseModal = () => {
+  board.classList.remove('hidden');
+  openCaseModal.classList.add('hidden');
+};
+
+const updateGuessModal = (briefcase, prize) => {
+  const caseNumber = getNumberFromCase(briefcase);
+  caseNumberElement.textContent = caseNumber;
+  amountElement.textContent = `$${prize}`;
+};
+
+const applyGuessToPrize = (prize) => {
+  const prizeElement = getPrizeElement(prize);
+  setTimeout(() => {
+    prizeElement.classList.add('muted');
+  }, 3000);
+};
+
+const getPrizeElement = (prize) => {
+  let prizeElement;
+  prizeAmounts.forEach((el) => {
+    if (el.textContent === prize) {
+      prizeElement = el;
+    }
+  });
+  const { parentElement } = prizeElement;
+  return parentElement;
+};
+
+const showOffer = () => {};
+
 export {
+  applyGuessToPrize,
   board,
   bottom,
   cases,
@@ -48,14 +117,19 @@ export {
   confirmModalSubmit,
   confirmTextSpan,
   currentOfferSpan,
+  fadeInBackground,
   gameInfo,
+  handleBackgrounds,
   infoCase,
   infoCasesToOpen,
   infoOffer,
   leftSide,
   offerModal,
+  openCaseModal,
   overlay,
   rightSide,
+  showGuessedCaseModal,
+  showOffer,
   top,
   topModal,
   updateCasesToOpen,

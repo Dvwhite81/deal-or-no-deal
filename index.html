@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <div id="overlay-black" class="fade-in"></div>
+  <div id="overlay-black"></div>
   <div id="container">
     <div id="top" class="hidden">
       <div id="top-modal">
@@ -39,7 +39,7 @@
             <div class="prize-cell">
               <div class="prize-select">
                 <span class="dollar-symbol">$</span>
-                <span class="prize-amount">.01</span>
+                <span class="prize-amount">0.01</span>
               </div>
             </div>
             <div class="prize-cell">
@@ -118,6 +118,12 @@
         </div>
       </div>
       <div id="center">
+        <div id="open-case-modal" class="hidden">
+          <div id="guessed-case" class="case">
+            <div id="guessed-case-number" class="case-text"></div>
+            <div id="guessed-case-amount" class="hidden"></div>
+          </div>
+        </div>
         <div id="help-modal" class="hidden">
           <div id="help-modal-content" class="modal-content">
             <p id="help-modal-p1">Click on cases to open them</p>

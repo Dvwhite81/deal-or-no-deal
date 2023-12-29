@@ -1,6 +1,5 @@
 .prize-cell {
   background: var(--gold-gradient);
-  border: 1px solid var(--dark-gold);
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;

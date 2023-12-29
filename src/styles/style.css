@@ -17,8 +17,8 @@
 }
 
 #overlay-black {
-  animation-name:fadeIn;
-  animation-duration:3s;
+  animation-name: fadeIn1;
+  animation-duration: 3s;
   animation-timing-function: ease-in;
   animation-fill-mode: forwards;
   background-color:black;
@@ -30,12 +30,21 @@
   z-index:1;
 }
 
-@keyframes fadeIn {
+@keyframes fadeIn1 {
   0% {
       opacity: 1;
   }
   100% {
       opacity: 0;
+  }
+}
+
+@keyframes fadeIn2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

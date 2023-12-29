@@ -1,7 +1,7 @@
 import { cases } from './dom';
 
 const PRIZES = [
-  '.01',
+  '0.01',
   '1',
   '5',
   '10',
@@ -29,43 +29,25 @@ const PRIZES = [
   '1,000,000',
 ];
 
-const assignPrizes = () => {
-  const assignedPrizes = [];
+const prizeValues = [
+  0.01, 1, 5, 10, 25, 50, 75, 100, 200, 300, 400, 500, 750, 1000, 5000, 10000,
+  25000, 50000, 75000, 100000, 200000, 300000, 400000, 500000, 750000, 1000000,
+];
+
+const fillCases = () => {
+  const assignedCases = [];
   const allPrizes = PRIZES;
 
   for (let i = 0; i < cases.length; i++) {
     const index = Math.floor(Math.random() * allPrizes.length);
     const briefcase = cases[i];
+
     const prize = allPrizes[index];
     allPrizes.splice(index, 1);
     const assigned = { briefcase, prize };
-    assignedPrizes.push(assigned);
+    assignedCases.push(assigned);
   }
-  return assignedPrizes;
-};
-
-const getPrize = (briefcase) => {
-  console.log('getPrize briefcase:', briefcase);
-};
-
-const getNumberFromCase = (briefcase) => {
-  const { id } = briefcase;
-  return id.split('-')[1];
-};
-
-const fillCases = () => {
-  console.log('fillCases');
-  const assignedCases = [];
-  const assignedPrizes = assignPrizes();
-  cases.forEach((briefcase) => {
-    const key = getNumberFromCase(briefcase);
-    const value = assignedPrizes[key - 1];
-    assignedCases.push({ key, value });
-    console.log('fillCases briefcase:', briefcase);
-    console.log('fillCases key:', key);
-    console.log('fillCases value:', value);
-  });
   return assignedCases;
 };
 
-export { fillCases, getPrize, PRIZES };
+export { fillCases, prizeValues };
