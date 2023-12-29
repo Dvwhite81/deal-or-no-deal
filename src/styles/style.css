@@ -52,6 +52,10 @@
   display: none!important;
 }
 
+.hideVisibility {
+  visibility: hidden;
+}
+
 .muted {
   background: var(--muted);
 }
@@ -61,8 +65,8 @@
 }
 
 .btn:hover {
-  background-color: black!important;
-  color: var(--light-gold)!important;
+  background-color: var(--light-gold)!important;
+  color: black!important;
   cursor: pointer;
 }
 

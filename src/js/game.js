@@ -8,8 +8,10 @@ import {
   confirmModalSubmit,
   confirmTextSpan,
   fadeInBackground,
+  getInitialDomState,
   handleBackgrounds,
   hideOffer,
+  showEndGameModal,
   showGuessedCaseModal,
   showHelpInfo,
   showOffer,
@@ -19,7 +21,14 @@ import {
   updateCurrentOffer,
   yourCaseDiv,
 } from './dom';
-import { fillCases, getOffer, getPrizeValue } from './prize-helpers';
+import {
+  fillCases,
+  getFormattedOffer,
+  getInitialCaseValue,
+  getOffer,
+  getPrizeValue,
+  madeAGoodDeal,
+} from './prize-helpers';
 
 let assignedCases;
 let offer;
@@ -28,8 +37,11 @@ let selectedCase;
 let round;
 let removedPrizes;
 let allPrizes;
+let caseValue;
+let isAccepted;
 
 const setup = () => {
+  getInitialDomState();
   allPrizes = [
     '0.01',
     '1',
@@ -63,6 +75,7 @@ const setup = () => {
   casesToOpen = 6;
   round = 1;
   removedPrizes = [];
+  isAccepted = false;
   setTimeout(fadeInBackground, 4000);
 };
 
@@ -103,8 +116,10 @@ const finishSetup = () => {
   const caseCopy = selectedCase.cloneNode(true);
   caseCopy.id = 'case-copy';
   copySelectedCase(caseCopy);
-  selectedCase.style.visibility = 'hidden';
-  startGame(selectedCase);
+  selectedCase.classList.add('hideVisibility');
+  caseValue = getInitialCaseValue(selectedCase, assignedCases);
+  console.log('caseValue:', caseValue);
+  startGame();
 };
 
 const copySelectedCase = (caseCopy) => {
@@ -151,20 +166,22 @@ const endRound = () => {
   }
   cases.forEach((c) => c.removeEventListener('click', guessCase));
   offer = getOffer(removedPrizes);
+  const formattedOffer = getFormattedOffer(offer);
   setTimeout(() => {
-    showOffer(offer);
+    showOffer(formattedOffer);
   }, 3000);
 };
 
 const acceptOffer = () => {
   hideOffer();
-  endGame();
+  isAccepted = true;
+  endGame(offer);
 };
 
 const refuseOffer = () => {
   casesToOpen = getNewCasesToOpen(round);
   updateCasesToOpen(casesToOpen);
-  updateCurrentOffer(offer);
+  updateCurrentOffer(getFormattedOffer(offer));
   hideOffer();
   playRound();
 };
@@ -197,8 +214,12 @@ const startGame = () => {
   }, 3000);
 };
 
-const endGame = () => {
+const endGame = (finalOffer) => {
   console.log('END GAME');
+  console.log('final:', finalOffer);
+  const yourCaseValue = getPrizeValue(caseValue, allPrizes);
+  const goodOrBadDeal = madeAGoodDeal(isAccepted, yourCaseValue, finalOffer);
+  showEndGameModal(isAccepted, finalOffer, yourCaseValue, goodOrBadDeal);
 };
 
 export { acceptOffer, refuseOffer, setCase, setup };

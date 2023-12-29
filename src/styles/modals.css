@@ -27,7 +27,8 @@
 
 #confirm-modal,
 #help-modal,
-#open-case-modal {
+#open-case-modal,
+#end-game-modal {
   background-color: #000;
   border: 1px solid var(--light-gold);
   border-radius: 10px;
@@ -46,11 +47,12 @@
 }
 
 #confirm-modal-submit,
-#help-modal-submit {
-  background-color: var(--light-gold);
+#help-modal-submit,
+#end-game-modal-submit {
+  background-color: black;
   border: 2px solid var(--light-gold);
   border-radius: 10px;
-  color: black;
+  color: var(--light-gold);
   margin: auto;
   padding: 0.5vw 1vw;
   width: fit-content;
@@ -112,6 +114,15 @@
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
   width: 40%;
+}
+
+#offer-modal-accept:hover,
+#offer-modal-refuse:hover {
+  border: 1px solid;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, .7), 0 0 20px rgba(255, 255, 255, .4);
+  outline-color: rgba(255, 255, 255, 0);
+  outline-offset: 15px;
+  text-shadow: 1px 1px 2px #427388;
 }
 
 #offer-modal-accept {

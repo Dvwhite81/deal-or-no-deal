@@ -1,37 +1,49 @@
-import { acceptOffer, refuseOffer, setCase } from './game';
+import { acceptOffer, refuseOffer, setCase, setup } from './game';
+import { getFormattedOffer } from './prize-helpers';
 
-const overlay = document.querySelector('#overlay-black');
+// Main elements
 const board = document.querySelector('#board');
+const bottom = document.querySelector('#bottom');
+const leftSide = document.querySelector('#left');
+const rightSide = document.querySelector('#right');
+const top = document.querySelector('#top');
+const overlay = document.querySelector('#overlay-black');
+const yourCaseDiv = document.querySelector('#info-your-case');
+
+// Secondary elements
+const amountElement = document.querySelector('#guessed-case-amount');
 const cases = board.querySelectorAll('.case');
-const confirmModal = document.querySelector('#confirm-modal');
-const confirmTextSpan = document.querySelector('#confirm-modal-span');
-const confirmModalClose = document.querySelector('#confirm-modal-close');
-const confirmModalSubmit = document.querySelector('#confirm-modal-submit');
-const topModal = document.querySelector('#top-modal');
+const caseNumberElement = document.querySelector('#guessed-case-number');
+const casesToOpenSpan = document.querySelector('#info-cases-to-open-value');
+const currentOfferSpan = document.querySelector('#info-offer-value');
 const gameInfo = document.querySelector('#game-info');
 const infoCase = document.querySelector('#info-case');
 const infoOffer = document.querySelector('#info-offer');
 const infoCasesToOpen = document.querySelector('#info-cases-to-open');
-const leftSide = document.querySelector('#left');
-const rightSide = document.querySelector('#right');
-const top = document.querySelector('#top');
-const bottom = document.querySelector('#bottom');
+const prizeAmounts = document.querySelectorAll('.prize-amount');
+const prizeSelects = document.querySelectorAll('.prize-select');
+
+// Modal elements
+const confirmModal = document.querySelector('#confirm-modal');
+const confirmTextSpan = document.querySelector('#confirm-modal-span');
+const confirmModalClose = document.querySelector('#confirm-modal-close');
+const confirmModalSubmit = document.querySelector('#confirm-modal-submit');
+const endGameModal = document.querySelector('#end-game-modal');
+const endGameCaseValueSpan = document.querySelector('#your-case-value-span');
+const endGameFinalOfferSpan = document.querySelector('#final-offer-span');
+const endGameGoodOrBadSpan = document.querySelector('#good-or-bad-span');
+const endGameModalSubmit = document.querySelector('#end-game-modal-submit');
+const endGameIsAcceptedSpan = document.querySelector('#accept-or-refuse-span');
+const helpModal = document.querySelector('#help-modal');
+const helpModalSubmit = document.querySelector('#help-modal-submit');
 const offerModal = document.querySelector('#offer-modal');
 const offerModalAmount = document.querySelector('#offer-modal-amount');
 const offerModalAccept = document.querySelector('#offer-modal-accept');
 const offerModalRefuse = document.querySelector('#offer-modal-refuse');
-const yourCaseDiv = document.querySelector('#info-your-case');
-const currentOfferSpan = document.querySelector('#info-offer-value');
-const casesToOpenSpan = document.querySelector('#info-cases-to-open-value');
-const helpModal = document.querySelector('#help-modal');
-const helpModalSubmit = document.querySelector('#help-modal-submit');
 const openCaseModal = document.querySelector('#open-case-modal');
-const caseNumberElement = document.querySelector('#guessed-case-number');
-const amountElement = document.querySelector('#guessed-case-amount');
-const prizeAmounts = document.querySelectorAll('.prize-amount');
+const topModal = document.querySelector('#top-modal');
 
 const updateCurrentOffer = (offer) => {
-  console.log('OFFER:', offer);
   currentOfferSpan.textContent = offer;
 };
 
@@ -71,7 +83,7 @@ const handleBackgrounds = () => {
 };
 
 const showGuessedCaseModal = (briefcase, prize) => {
-  briefcase.style.visibility = 'hidden';
+  briefcase.classList.add('hideVisibility');
   board.classList.add('hidden');
   openCaseModal.classList.remove('hidden');
   updateGuessModal(briefcase, prize);
@@ -123,6 +135,36 @@ const hideOffer = () => {
   offerModal.classList.add('hidden');
 };
 
+const showEndGameModal = (isAccepted, finalOffer, caseValue, goodOrBadDeal) => {
+  board.classList.add('hidden');
+  top.classList.add('muted');
+  top.classList.remove('black');
+  gameInfo.classList.add('hidden');
+  leftSide.classList.add('hidden');
+  rightSide.classList.add('hidden');
+  endGameModal.classList.remove('hidden');
+  const acceptedText = isAccepted ? 'accepted' : 'refused';
+  endGameIsAcceptedSpan.textContent = acceptedText;
+  endGameFinalOfferSpan.textContent = getFormattedOffer(finalOffer);
+  endGameCaseValueSpan.textContent = getFormattedOffer(caseValue);
+  endGameGoodOrBadSpan.textContent = goodOrBadDeal;
+  endGameModalSubmit.addEventListener('click', setup);
+};
+
+const getInitialDomState = () => {
+  overlay.className = '';
+  top.className = 'hidden';
+  topModal.className = '';
+  bottom.className = '';
+  const previousCase = yourCaseDiv.querySelector('.case');
+  if (previousCase) {
+    previousCase.remove();
+  }
+  cases.forEach((c) => c.classList.remove('hideVisibility'));
+  prizeSelects.forEach((p) => p.classList.remove('muted'));
+  endGameModal.classList.add('hidden');
+};
+
 export {
   applyGuessToPrize,
   board,
@@ -136,6 +178,7 @@ export {
   currentOfferSpan,
   fadeInBackground,
   gameInfo,
+  getInitialDomState,
   handleBackgrounds,
   hideOffer,
   infoCase,
@@ -146,6 +189,7 @@ export {
   openCaseModal,
   overlay,
   rightSide,
+  showEndGameModal,
   showGuessedCaseModal,
   showOffer,
   top,
