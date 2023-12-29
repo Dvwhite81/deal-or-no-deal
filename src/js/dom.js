@@ -1,5 +1,5 @@
 import { acceptOffer, refuseOffer, setCase, setup } from './game';
-import { getFormattedOffer } from './prize-helpers';
+import { getFormattedOffer, madeAGoodDeal } from './prize-helpers';
 
 // Main elements
 const board = document.querySelector('#board');
@@ -34,6 +34,24 @@ const endGameFinalOfferSpan = document.querySelector('#final-offer-span');
 const endGameGoodOrBadSpan = document.querySelector('#good-or-bad-span');
 const endGameModalSubmit = document.querySelector('#end-game-modal-submit');
 const endGameIsAcceptedSpan = document.querySelector('#accept-or-refuse-span');
+const finalChoiceModal = document.querySelector('#final-choice-modal');
+const finalYourCase = document.querySelector('#final-your-case');
+const finalLastCase = document.querySelector('#final-last-case');
+const finalChoiceYourCaseNumber = document.querySelector(
+  '#final-your-case-number',
+);
+const finalChoiceLastCaseNumber = document.querySelector(
+  '#final-last-case-number',
+);
+const finalChoiceYourCaseAmount = document.querySelector(
+  '#final-your-case-amount',
+);
+const finalChoiceLastCaseAmount = document.querySelector(
+  '#final-last-case-amount',
+);
+const finalGoodOrBad = document.querySelector('#final-good-or-bad');
+const finalGoodOrBadSpan = document.querySelector('#final-good-or-bad-span');
+const finalModalSubmit = document.querySelector('#final-choice-modal-submit');
 const helpModal = document.querySelector('#help-modal');
 const helpModalSubmit = document.querySelector('#help-modal-submit');
 const offerModal = document.querySelector('#offer-modal');
@@ -135,6 +153,63 @@ const hideOffer = () => {
   offerModal.classList.add('hidden');
 };
 
+const showFinalChoiceModal = (yourPrize, yourNumber, lastPrize, lastNumber) => {
+  board.classList.add('hidden');
+  finalChoiceYourCaseNumber.textContent = yourNumber;
+  finalChoiceYourCaseAmount.textContent = `$${yourPrize}`;
+  finalChoiceLastCaseNumber.textContent = lastNumber;
+  finalChoiceLastCaseAmount.textContent = `$${lastPrize}`;
+  finalChoiceModal.classList.remove('hidden');
+  addFinalChoiceListeners(yourPrize, lastPrize);
+};
+
+const addFinalChoiceListeners = (yourPrize, lastPrize) => {
+  finalYourCase.addEventListener('click', () =>
+    makeFinalChoice(true, yourPrize, lastPrize),
+  );
+  finalLastCase.addEventListener('click', () =>
+    makeFinalChoice(false, yourPrize, lastPrize),
+  );
+};
+
+const makeFinalChoice = (isYourCase, yourPrize, lastPrize) => {
+  const isAccepted = !isYourCase;
+  const firstCase = isYourCase
+    ? finalChoiceYourCaseAmount
+    : finalChoiceLastCaseAmount;
+  const secondCase = isYourCase
+    ? finalChoiceLastCaseAmount
+    : finalChoiceYourCaseAmount;
+
+  const noCommasYourPrize = yourPrize.replace(/,/g, '');
+  const noCommasLastPrize = lastPrize.replace(/,/g, '');
+  const goodOrBadDeal = madeAGoodDeal(
+    isAccepted,
+    noCommasYourPrize,
+    noCommasLastPrize,
+  );
+
+  firstCase.classList.remove('hidden');
+  setTimeout(() => {
+    secondCase.classList.remove('hidden');
+    finalGoodOrBad.classList.remove('hidden');
+    finalGoodOrBadSpan.textContent = goodOrBadDeal;
+    finalModalSubmit.addEventListener('click', setup);
+  }, 2000);
+};
+
+const getLastCase = () => {
+  const boardCases = board.querySelectorAll('.case');
+  let lastCase;
+  boardCases.forEach((c) => {
+    if (!c.classList.contains('hideVisibility')) {
+      lastCase = c;
+    }
+  });
+
+  return lastCase;
+};
+
 const showEndGameModal = (isAccepted, finalOffer, caseValue, goodOrBadDeal) => {
   board.classList.add('hidden');
   top.classList.add('muted');
@@ -156,6 +231,8 @@ const getInitialDomState = () => {
   top.className = 'hidden';
   topModal.className = '';
   bottom.className = '';
+  leftSide.classList.add('hidden');
+  rightSide.classList.add('hidden');
   const previousCase = yourCaseDiv.querySelector('.case');
   if (previousCase) {
     previousCase.remove();
@@ -163,6 +240,7 @@ const getInitialDomState = () => {
   cases.forEach((c) => c.classList.remove('hideVisibility'));
   prizeSelects.forEach((p) => p.classList.remove('muted'));
   endGameModal.classList.add('hidden');
+  finalChoiceModal.classList.add('hidden');
 };
 
 export {
@@ -179,6 +257,8 @@ export {
   fadeInBackground,
   gameInfo,
   getInitialDomState,
+  getLastCase,
+  getNumberFromCase,
   handleBackgrounds,
   hideOffer,
   infoCase,
@@ -190,6 +270,7 @@ export {
   overlay,
   rightSide,
   showEndGameModal,
+  showFinalChoiceModal,
   showGuessedCaseModal,
   showOffer,
   top,

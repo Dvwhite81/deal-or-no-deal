@@ -35,7 +35,6 @@ const fillCases = () => {
     '750,000',
     '1,000,000',
   ];
-  console.log('allPrizes:', allPrizes);
 
   for (let i = 0; i < cases.length; i++) {
     const index = Math.floor(Math.random() * allPrizes.length);
@@ -46,7 +45,6 @@ const fillCases = () => {
     const assigned = { briefcase, prize };
     assignedCases.push(assigned);
   }
-  console.log('assigned:', assignedCases);
   return assignedCases;
 };
 
@@ -60,7 +58,7 @@ const getPrizeValue = (prize, allPrizes) => {
   return prizeValues[index];
 };
 
-const getOffer = (removedPrizes) => {
+const getOffer = (removedPrizes, offerPercentage) => {
   let squareSum = 0;
   let count = 0;
   prizeValues.forEach((v) => {
@@ -71,7 +69,8 @@ const getOffer = (removedPrizes) => {
     }
   });
   const squareAverage = squareSum / count;
-  const offer = Math.round(Math.sqrt(squareAverage));
+  const sqrt = Math.sqrt(squareAverage);
+  const offer = Math.round(sqrt * offerPercentage);
   return offer;
 };
 

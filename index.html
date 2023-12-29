@@ -150,6 +150,25 @@
             <button id="offer-modal-refuse" type="button">NO DEAL</button>
           </div>
         </div>
+        <div id="final-choice-modal" class="hidden">
+          <div id="final-modal-content" class="modal-content">
+            <p>FINAL CHOICE</p>
+            <p>You can keep your case or trade for the last case.</p>
+            <p>Click on a case to make your choice!</p>
+          </div>
+          <p id="final-good-or-bad" class="hidden">You made a... <span id="final-good-or-bad-span"></span> deal!!</p>
+          <div id="final-cases">
+            <div id="final-your-case" class="case">
+              <div id="final-your-case-number" class="case-text"></div>
+              <div id="final-your-case-amount" class="hidden"></div>
+            </div>
+            <div id="final-last-case" class="case">
+              <div id="final-last-case-number" class="case-text"></div>
+              <div id="final-last-case-amount" class="hidden"></div>
+            </div>
+          </div>
+          <button id="final-choice-modal-submit" class="btn">Play Again</button>
+        </div>
         <div id="end-game-modal" class="hidden">
           <div id="end-game-modal-content" class="modal-content">
             <p>You <span id="accept-or-refuse-span"></span>

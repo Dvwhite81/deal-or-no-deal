@@ -9,9 +9,12 @@ import {
   confirmTextSpan,
   fadeInBackground,
   getInitialDomState,
+  getLastCase,
+  getNumberFromCase,
   handleBackgrounds,
   hideOffer,
   showEndGameModal,
+  showFinalChoiceModal,
   showGuessedCaseModal,
   showHelpInfo,
   showOffer,
@@ -39,6 +42,7 @@ let removedPrizes;
 let allPrizes;
 let caseValue;
 let isAccepted;
+let offerPercentage;
 
 const setup = () => {
   getInitialDomState();
@@ -76,6 +80,7 @@ const setup = () => {
   round = 1;
   removedPrizes = [];
   isAccepted = false;
+  offerPercentage = 0.2;
   setTimeout(fadeInBackground, 4000);
 };
 
@@ -118,7 +123,6 @@ const finishSetup = () => {
   copySelectedCase(caseCopy);
   selectedCase.classList.add('hideVisibility');
   caseValue = getInitialCaseValue(selectedCase, assignedCases);
-  console.log('caseValue:', caseValue);
   startGame();
 };
 
@@ -159,17 +163,25 @@ const playRound = () => {
 };
 
 const endRound = () => {
-  console.log('endRound');
   round++;
-  if (round === 10) {
-    endGame();
-  }
+  offerPercentage += 0.1;
   cases.forEach((c) => c.removeEventListener('click', guessCase));
-  offer = getOffer(removedPrizes);
+  offer = getOffer(removedPrizes, offerPercentage);
   const formattedOffer = getFormattedOffer(offer);
   setTimeout(() => {
     showOffer(formattedOffer);
   }, 3000);
+};
+
+const setUpFinalChoice = () => {
+  const yourAssigned = assignedCases.find((c) => c.briefcase === selectedCase);
+  const yourPrize = yourAssigned.prize;
+  const yourNumber = getNumberFromCase(selectedCase);
+  const lastCase = getLastCase();
+  const lastAssigned = assignedCases.find((c) => c.briefcase === lastCase);
+  const lastPrize = lastAssigned.prize;
+  const lastNumber = getNumberFromCase(lastCase);
+  showFinalChoiceModal(yourPrize, yourNumber, lastPrize, lastNumber);
 };
 
 const acceptOffer = () => {
@@ -183,7 +195,11 @@ const refuseOffer = () => {
   updateCasesToOpen(casesToOpen);
   updateCurrentOffer(getFormattedOffer(offer));
   hideOffer();
-  playRound();
+  if (round === 10) {
+    setUpFinalChoice();
+  } else {
+    playRound();
+  }
 };
 
 const getNewCasesToOpen = () => {
@@ -215,8 +231,6 @@ const startGame = () => {
 };
 
 const endGame = (finalOffer) => {
-  console.log('END GAME');
-  console.log('final:', finalOffer);
   const yourCaseValue = getPrizeValue(caseValue, allPrizes);
   const goodOrBadDeal = madeAGoodDeal(isAccepted, yourCaseValue, finalOffer);
   showEndGameModal(isAccepted, finalOffer, yourCaseValue, goodOrBadDeal);

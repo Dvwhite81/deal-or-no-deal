@@ -28,7 +28,8 @@
 #confirm-modal,
 #help-modal,
 #open-case-modal,
-#end-game-modal {
+#end-game-modal,
+#final-choice-modal {
   background-color: #000;
   border: 1px solid var(--light-gold);
   border-radius: 10px;
@@ -48,7 +49,8 @@
 
 #confirm-modal-submit,
 #help-modal-submit,
-#end-game-modal-submit {
+#end-game-modal-submit,
+#final-choice-modal-submit {
   background-color: black;
   border: 2px solid var(--light-gold);
   border-radius: 10px;
@@ -157,11 +159,15 @@
   width: 80%;
 }
 
-#guessed-case:hover {
+#guessed-case:hover,
+#final-your-case:hover,
+#final-last-case:hover {
     opacity: 1;
 }
 
-#guessed-case-number {
+#guessed-case-number,
+#final-your-case-number,
+#final-last-case-number {
   color: black;
   display: flex;
   font-size: 20vh;
@@ -169,7 +175,9 @@
   margin: auto;
 }
 
-#guessed-case-amount {
+#guessed-case-amount,
+#final-your-case-amount,
+#final-last-case-amount {
   align-items: center;
   animation-name: fadeIn2;
   animation-duration: 2s;
@@ -186,4 +194,41 @@
   top: 58%;
   transform: translate(-50%,-50%);
   width: 35vh;
+}
+
+#final-choice-modal {
+  background-color: #000;
+  border: 1px solid var(--light-gold);
+  border-radius: 10px;
+  color: var(--light-gold);
+  display: flex;
+  flex-direction: column;
+  font-size: larger;
+  height: 80vh;
+  left: 50%;
+  position: absolute;
+  top: 53%;
+  transform: translate(-50%,-50%);
+  width: 80vw;
+}
+
+div#final-modal-content {
+  height: 40%;
+}
+
+div#final-cases {
+  display: flex; height: 50%;
+}
+
+#final-cases .case {
+  align-content: baseline;
+  background-position: 50%;
+  height: 80%;
+  margin: auto;
+  position: relative;
+  width: 80%;
+}
+
+#final-cases .case:hover {
+  opacity: 0.5;
 }

@@ -37,7 +37,8 @@
 
 #info-your-case-label,
 #info-offer-label,
-#info-cases-to-open-label {
+#info-cases-to-open-label,
+#final-good-or-bad {
   background: var(--gold-gradient);
   background-clip: text;
   filter: brightness(120%);
