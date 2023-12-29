@@ -102,6 +102,7 @@
   align-items: center;
   border-radius: 5px;
   color: ivory;
+  cursor: pointer;
   display: flex;
   font-size: x-large;
   font-weight: bolder;

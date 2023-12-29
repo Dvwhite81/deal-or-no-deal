@@ -1,4 +1,4 @@
-import { setCase } from './game';
+import { acceptOffer, refuseOffer, setCase } from './game';
 
 const overlay = document.querySelector('#overlay-black');
 const board = document.querySelector('#board');
@@ -17,6 +17,9 @@ const rightSide = document.querySelector('#right');
 const top = document.querySelector('#top');
 const bottom = document.querySelector('#bottom');
 const offerModal = document.querySelector('#offer-modal');
+const offerModalAmount = document.querySelector('#offer-modal-amount');
+const offerModalAccept = document.querySelector('#offer-modal-accept');
+const offerModalRefuse = document.querySelector('#offer-modal-refuse');
 const yourCaseDiv = document.querySelector('#info-your-case');
 const currentOfferSpan = document.querySelector('#info-offer-value');
 const casesToOpenSpan = document.querySelector('#info-cases-to-open-value');
@@ -28,6 +31,7 @@ const amountElement = document.querySelector('#guessed-case-amount');
 const prizeAmounts = document.querySelectorAll('.prize-amount');
 
 const updateCurrentOffer = (offer) => {
+  console.log('OFFER:', offer);
   currentOfferSpan.textContent = offer;
 };
 
@@ -104,7 +108,20 @@ const getPrizeElement = (prize) => {
   return parentElement;
 };
 
-const showOffer = () => {};
+const showOffer = (offer) => {
+  gameInfo.classList.add('hidden');
+  board.classList.add('hidden');
+  offerModalAmount.textContent = offer;
+  offerModal.classList.remove('hidden');
+  offerModalAccept.addEventListener('click', acceptOffer);
+  offerModalRefuse.addEventListener('click', refuseOffer);
+};
+
+const hideOffer = () => {
+  gameInfo.classList.remove('hidden');
+  board.classList.remove('hidden');
+  offerModal.classList.add('hidden');
+};
 
 export {
   applyGuessToPrize,
@@ -120,6 +137,7 @@ export {
   fadeInBackground,
   gameInfo,
   handleBackgrounds,
+  hideOffer,
   infoCase,
   infoCasesToOpen,
   infoOffer,

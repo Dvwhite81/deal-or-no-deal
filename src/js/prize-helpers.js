@@ -50,4 +50,32 @@ const fillCases = () => {
   return assignedCases;
 };
 
-export { fillCases, prizeValues };
+const getPrizeValue = (prize, allPrizes) => {
+  const index = allPrizes.indexOf(prize);
+  return prizeValues[index];
+};
+
+const getOffer = (removedPrizes) => {
+  let squareSum = 0;
+  let count = 0;
+  prizeValues.forEach((v) => {
+    if (!removedPrizes.includes(v)) {
+      const square = v * v;
+      squareSum += square;
+      count++;
+    }
+  });
+  const squareAverage = squareSum / count;
+  const offer = Math.round(Math.sqrt(squareAverage));
+  return getFormattedOffer(offer);
+};
+
+const getFormattedOffer = (offer) => {
+  const USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+  return USDollar.format(offer);
+};
+
+export { fillCases, getFormattedOffer, getOffer, getPrizeValue, prizeValues };
